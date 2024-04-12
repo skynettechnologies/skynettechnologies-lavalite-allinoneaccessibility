@@ -3,7 +3,6 @@
 namespace Skynettechnologies\Allinoneaccessibility\Http\Controllers;
 
 use Exception;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Skynettechnologies\Allinoneaccessibility\Actions\AllinoneaccessibilityAction;
 use Skynettechnologies\Allinoneaccessibility\Actions\AllinoneaccessibilityActions;
 use Skynettechnologies\Allinoneaccessibility\Forms\Allinoneaccessibility as AllinoneaccessibilityForm;
@@ -12,9 +11,7 @@ use Skynettechnologies\Allinoneaccessibility\Http\Resources\Allinoneaccessibilit
 use Skynettechnologies\Allinoneaccessibility\Http\Resources\AllinoneaccessibilitysCollection;
 use Skynettechnologies\Allinoneaccessibility\Models\Allinoneaccessibility;
 use Litepie\Http\Controllers\ResourceController as BaseController;
-use Illuminate\Support\Facades\DB;
 use Theme;
-use Illuminate\Database\Seeder;
 
 /**
  * Resource controller class for allinoneaccessibility.
@@ -28,6 +25,7 @@ class AllinoneaccessibilityResourceController extends BaseController
      *
      * @return null
      */
+    public  $theme;
     public function __construct()
     {
         parent::__construct();
@@ -39,34 +37,32 @@ class AllinoneaccessibilityResourceController extends BaseController
             return $next($request);
         });
     }
-
     /**
      * Display a list of allinoneaccessibility.
      *
      * @return Response
      */
-    public function index(AllinoneaccessibilityResourceRequest $request,Allinoneaccessibility $model)
+    public function index(AllinoneaccessibilityResourceRequest $request)
     {
-            $current_domain_name = $_SERVER['HTTP_HOST'];
-            $curl = curl_init();
-            curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://ada.skynettechnologies.us/check-website',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => array('domain' =>  $current_domain_name) //'xoopsdemo.com'
-            ));
-            $response = curl_exec($curl);
-            curl_close($curl);
-            $settingURLObject = json_decode($response);
-            $dependencies = array();
-            $theme = Theme::uses('default')->layout('app');
-            $theme->asset()->writeStyle('inline-style', '
-
+        $current_domain_name = $_SERVER['HTTP_HOST'];
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://ada.skynettechnologies.us/check-website',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array('domain' =>  $current_domain_name) //'xoopsdemo.com', 'skynettechnologies.com'
+        ));
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $settingURLObject = json_decode($response);
+        $dependencies = array();
+        $themes = Theme::uses('default')->layout('app');
+        $themes->asset()->writeStyle('inline-style', '
                     body {
                         padding-left: 76px;
                         padding-top: 50px;
@@ -92,43 +88,47 @@ class AllinoneaccessibilityResourceController extends BaseController
                       display:none;
                     }
                 ', $dependencies);
-            try{
-                if(isset($settingURLObject->status) && $settingURLObject->status == 3)
-                { ?>
-                    <div class="aioa-expire-plan-wrapper">
-                        <h3 style="color: #aa1111">It appears that you have already registered! Please click on the "Manage Subscription" button to renew your subscription.<br> Once your plan is renewed, please refresh the page.</h3>
-                        <div style="text-align: left; width:100%; padding-bottom: 10px;"><a target="_blank" class="aioa-cancel-button"  href="<?php echo $settingURLObject->settinglink;?>">Manage Subscription</a></div>
+        try{
+            if(isset($settingURLObject->status) && $settingURLObject->status == 3)
+            { ?>
+                <div class="aioa-expire-plan-wrapper">
+                    <h3 style="color: #aa1111">It appears that you have already registered! Please click on the "Manage Subscription" button to renew your subscription.<br> Once your plan is renewed, please refresh the page.</h3>
+                    <div style="text-align: left; width:100%; padding-bottom: 10px;"><a target="_blank" class="aioa-cancel-button"  href="<?php echo $settingURLObject->settinglink;?>">Manage Subscription</a></div>
+                </div>
+            <?php }
+            else if(isset($settingURLObject->status) && $settingURLObject->status > 0 && $settingURLObject->status < 3)
+            {
+                ?>
+                <div class="aioa-heading-wrapper">
+                    <h2>Widget Preferences:</h2>
+                    <div style="width:100%; padding-bottom: 10px;">
+                        <a target="_blank" class="aioa-cancel-button" href="<?php echo $settingURLObject->manage_domain;?>">Manage Subscription</a>
                     </div>
-                <?php }
-                else if(isset($settingURLObject->status) && $settingURLObject->status > 0 && $settingURLObject->status < 3)
-                {
-                    ?>
-                    <div class="aioa-heading-wrapper">
-                        <h2>Widget Preferences:</h2>
-                        <div style="width:100%; padding-bottom: 10px;">
-                            <a target="_blank" class="aioa-cancel-button" href="<?php echo $settingURLObject->manage_domain;?>">Manage Subscription</a>
-                        </div>
-                    </div>
-                    <iframe id="aioamyIframe" width="100%" style=" height: calc(100vh - 150px); max-width: 1920px;" height="2900px"  src="<?php echo $settingURLObject->settinglink; ?>"></iframe>
-                    <?php
-                }
-                else{
-                    ?>
-                    <div class="aioa-new-user-wrapper">
+                </div>
+                <iframe id="aioamyIframe" width="100%" style=" height: calc(100vh - 150px); max-width: 1920px;" height="2900px"  src="<?php echo $settingURLObject->settinglink; ?>"></iframe>
+                <?php
+            }
+            else{
+                ?>
+                <div class="aioa-new-user-wrapper">
                     <iframe src="https://ada.skynettechnologies.us/trial-subscription?isframe=true&website=<?php echo $current_domain_name;?>&developer_mode=true" height="600px;" width="100%" style="    height: calc(100vh - 100px); border: none;"></iframe>
-                    </div>
-                    <?php
-                }
-            } catch(Exception $e){}
-            $form = $this->form;
-            $modules = $this->modules;
-            $data = new AllinoneaccessibilityResource($model);
-            return $this->response->setMetaTitle(trans('allinoneaccessibility::allinoneaccessibility.names'))
-                ->view('allinoneaccessibility::allinoneaccessibility.index')
-                ->data(compact('data','form','modules'))
-                ->output();
-        }
+                </div>
+                <?php
+            }
+        } catch(Exception $e){}
+        $request = $request->all();
+        $page = AllinoneaccessibilityActions::run('paginate', $request);
+        $data = new AllinoneaccessibilitysCollection($page);
+        $form = $this->form;
+        $modules = $this->modules;
+        return $this->response->setMetaTitle(trans('allinoneaccessibility::allinoneaccessibility.names'))
+            ->view('allinoneaccessibility::allinoneaccessibility.index')
+            ->data(compact('data', 'modules', 'form'))
+            ->output();
+    }
+        //Should be called in a view like this:
 
+        //Should be called in a view like this:
     /**
      * Display allinoneaccessibility.
      *

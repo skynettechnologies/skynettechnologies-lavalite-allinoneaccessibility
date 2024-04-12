@@ -20,7 +20,6 @@ class AllinoneaccessibilityPublicController extends BaseController
      */
     protected function index(PublicRequest $request)
     {
-
         $search = $request->search;
         $pageLimit = $request->input('pageLimit', config('database.pagination.limit'));
         $page = Allinoneaccessibility::pushScope(new RequestScope())

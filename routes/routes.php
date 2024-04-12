@@ -11,6 +11,6 @@ Route::prefix('{guard}/allinoneaccessibility')->group(function () {
 
 
 // Public routes for allinoneaccessibility
-Route::get('allinoneaccessibilitys', 'AllinoneaccessibilityPublicController@index');
+Route::get('allinoneaccessibility', 'AllinoneaccessibilityPublicController@index');
 Route::get('allinoneaccessibility/{slug}.html', 'AllinoneaccessibilityPublicController@show');
 Route::get('allinoneaccessibility.htm', 'AllinoneaccessibilityPublicController@show');

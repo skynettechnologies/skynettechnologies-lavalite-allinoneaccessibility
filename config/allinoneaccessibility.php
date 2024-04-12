@@ -5,7 +5,7 @@ return
     [
         'model' => [
             'model' => \Skynettechnologies\Allinoneaccessibility\Models\Allinoneaccessibility::class,
-            'table' => 'Skynettechnologies_allinoneaccessibility_allinoneaccessibilitys',
+            'table' => 'Skynettechnologies_allinoneaccessibility_allinoneaccessibility',
             'hidden'=> [],
             'visible' => [],
             'guarded' => ['*'],
@@ -16,24 +16,24 @@ return
             'translatables' => [],
             'upload_folder' => 'allinoneaccessibility/allinoneaccessibility',
             'uploads' => [
-            /*
-                    'images' => [
-                        'count' => 10,
-                        'type'  => 'image',
-                    ],
-                    'file' => [
-                        'count' => 1,
-                        'type'  => 'file',
-                    ],
-            */
+                /*
+                        'images' => [
+                            'count' => 10,
+                            'type'  => 'image',
+                        ],
+                        'file' => [
+                            'count' => 1,
+                            'type'  => 'file',
+                        ],
+                */
             ],
 
             'casts' => [
 
-            /*
-                'images'    => 'array',
-                'file'      => 'array',
-            */
+                /*
+                    'images'    => 'array',
+                    'file'      => 'array',
+                */
             ],
 
             'revision' => [],

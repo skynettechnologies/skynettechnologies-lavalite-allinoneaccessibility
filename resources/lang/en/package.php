@@ -13,5 +13,5 @@ return [
     */
 
     'name'          => 'Allinoneaccessibility',
-    'names'         => 'Allinoneaccessibilitys',
+    'names'         => 'Allinoneaccessibility',
 ];

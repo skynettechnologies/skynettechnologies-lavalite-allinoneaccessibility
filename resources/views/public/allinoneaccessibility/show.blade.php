@@ -1,9 +1,7 @@
 @include('allinoneaccessibility::public.allinoneaccessibility.partial.header')
-
-
-
 <section class="allinoneaccessibility-section">
     <div class="container">
+        {{ Trans::getNonLocalizedURL($url) }}
         <div class="row justify-content-center">
             <div class="col-xl-10">
                 <div class="allinoneaccessibility-widget-wrapper">

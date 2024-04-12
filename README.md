@@ -1,8 +1,15 @@
-# All in One Accessibility: Lavalite Extension
+# All in One Accessibility™: Lavalite Package
 
-[All in One Accessibility](https://www.skynettechnologies.com/all-in-one-accessibility) extension improves Lavalite website ADA compliance and browser experience for ADA, WCAG 2.1 & 2.2, Section 508, Australian DDA, European EAA EN 301 549, UK Equality Act (EA), Israeli Standard 5568, California Unruh, Ontario AODA, Canada ACA, German BITV, France RGAA, Brazilian Inclusion Law (LBI 13.146/2015), Spain UNE 139803:2012, JIS X 8341 (Japan), Italian Stanca Act and Switzerland DDA Standards.
+All in One Accessibility™ AI Widget Supports 140 Languages, Screen Reader, Voice Navigation, Dictionary, Virtual Keyboard, Accessibility Profiles, Sign language Libras (Brazilian Portuguese) Custom Widget Color, Icon size, Position, GA4 Tracking and custom accessibility statement link are some of the top features.
 
-It uses the accessibility interface which handles UI and design related adjustments. All in One Accessibility app enhances your Lavalite website accessibility to people with hearing or vision impairments, motor impaired, color blind, dyslexia, cognitive & learning impairments, seizure and epileptic, and ADHD problems.
+
+Our AI automatically remediates images Alternative text and uses the accessibility interface which handles UI and design related adjustments. All in One Accessibility™ app enhances your  Lavalite website accessibility to people with hearing or vision impairments, motor impaired, color blind, dyslexia, cognitive & learning impairments, seizure and epileptic, and ADHD problems.
+
+
+It improves Lavalite website ADA compliance and browser experience for ADA, WCAG 2.1 & 2.2, Section 508, California Unruh Act, Australian DDA, European EAA EN 301 549, UK Equality Act (EA), Israeli Standard 5568, Ontario AODA, Canada ACA, German BITV, France RGAA, Brazilian Inclusion Law (LBI 13.146/2015), Spain UNE 139803:2012, JIS X 8341 (Japan), Italian Stanca Act and Switzerland DDA Standards.
+
+
+Follows the best industry security, SEO practices and standards ISO 9001:2015 & ISO 27001:2013 and complies with GDPR, COPPA regulations. Member of W3C and International Association of Accessibility Professionals (IAAP). It is a flexible & lightweight widget that can be changed according to law and reduces the risk of time-consuming accessibility lawsuits.
 
 ## Features
 #### Skip Links
@@ -109,7 +116,7 @@ It uses the accessibility interface which handles UI and design related adjustme
 Run the below command form the root folder of lavalite.
 
 ```
-    composer require "skynetechnologies/lavalite-allinoneaccessibility"
+    composer require skynetechnologies/lavalite-allinoneaccessibility
 ```
 
 ## Migration and seeds
@@ -117,28 +124,22 @@ Run the below command form the root folder of lavalite.
 ```
     php artisan migrate
 ```
-## 
-## Publishing
-
-* Configuration
-```
-    php artisan vendor:publish --provider="Skynettechnologies\Allinoneaccessibility\Providers\AllinoneaccessibilityServiceProvider" --tag="config"
-```
-* Language
-```
-    php artisan vendor:publish --provider="Skynettechnologies\Allinoneaccessibility\Providers\AllinoneaccessibilityServiceProvider" --tag="lang"
-```
-* Views
-```
-    php artisan vendor:publish --provider="Skynettechnologies\Allinoneaccessibility\Providers\AllinoneaccessibilityServiceProvider" --tag="view"
-```
-## Enable the plugin
+## Configuring Providers and Facades 
+Add service provider and facades to the config/app.php to link the package to the project
 
 ```
-~ Add below script in your theme footer file
- <script id="aioa-adawidget" src="https://www.skynettechnologies.com/accessibility/js/all-in-one-accessibility-js-widget-minify.js?aioa_reg_req=true&colorcode=&token=&position=bottom_right"></script>
-```
+    'providers' => [
+      ...
+      Skynettechnologies\Allinoneaccessibility\Providers\AllinoneaccessibilityServiceProvider::class,
+      ...
+     ],
 
+    'aliases' => [
+      ...
+      'Allinoneaccessibility'  => Skynettechnologies\Allinoneaccessibility\Facades\Allinoneaccessibility::class,
+      ...
+     ],
+```
 ## Screenshots
 
 ![App Screenshot](https://www.skynettechnologies.com/sites/default/files/screenshot3.png)
@@ -151,16 +152,16 @@ Run the below command form the root folder of lavalite.
 
 ## Video
 
-[![All in One Accessibility](https://img.youtube.com/vi/czwC0PKIqkc/0.jpg)](https://www.youtube.com/watch?v=czwC0PKIqkc)
+[![All in One Accessibility™](https://img.youtube.com/vi/czwC0PKIqkc/0.jpg)](https://www.youtube.com/watch?v=8y3xtOaFvU0)
 
 ## Acknowledgements
 
- - [Lavalite All in One Accessibility](https://www.skynettechnologies.com/lavalite-ada-compliant-widget)
- - [Lavalite All in One Accessibility Extension installation steps blog](https://www.skynettechnologies.com/blog/lavalite-web-accessibility-widget-installation)
+- [Lavalite All in One Accessibility™](https://www.skynettechnologies.com/lavalite-ada-compliant-widget)
+- [Lavalite All in One Accessibility™ Extension installation steps blog](https://www.skynettechnologies.com/blog/lavalite-web-accessibility-widget-installation)
 
 ## Documentation
 
-[All in One Accessibility - User Guide](https://www.dropbox.com/s/de41n4xm9zjwxix/All-in-One-Accessibility-PRO-App-Usage-and-Functionality.pdf?dl=0)
+[All in One Accessibility™ - User Guide](https://www.dropbox.com/s/de41n4xm9zjwxix/All-in-One-Accessibility-PRO-App-Usage-and-Functionality.pdf?dl=0)
 
 ## Support
 For any kind of queries/support please Email us at [Skynet Technologies Support](mailto:hello@skynettechnologies.com)

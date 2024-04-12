@@ -4,7 +4,6 @@
             <div class="position-relative">
                 <input type="text" class="form-control category-filter" name="q"
                     placeholder="Enter your keywords...">
-
             </div>
         </form>
     </div>
@@ -43,7 +42,7 @@
         <h4>Tags Cloud</h4>
         <div class="tag-cloud">
             @foreach($tags as $tag)
-            <a href="{{url('allinoneaccessibilitys')}}?tag={{$tag['slug']}}">{{$tag['name']}}</a>
+            <a href="{{url('allinoneaccessibility')}}?tag={{$tag['slug']}}">{{$tag['name']}}</a>
             @endforeach
         </div>
     </div>

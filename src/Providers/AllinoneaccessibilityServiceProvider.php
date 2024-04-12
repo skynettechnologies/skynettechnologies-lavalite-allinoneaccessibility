@@ -2,9 +2,11 @@
 
 namespace Skynettechnologies\Allinoneaccessibility\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Skynettechnologies\Allinoneaccessibility\Allinoneaccessibilitys;
-
+use Theme;
+use Illuminate\Support\Facades\Request;
 class AllinoneaccessibilityServiceProvider extends ServiceProvider
 {
     /**
@@ -24,16 +26,44 @@ class AllinoneaccessibilityServiceProvider extends ServiceProvider
         // Load view
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'allinoneaccessibility');
 
+
         // Load translation
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'allinoneaccessibility');
 
         // Load migrations
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
-        // Call pblish redources function
+        // Call publish resources function
         $this->publishResources();
-
-    }
+//        $host = url()->current();
+        if (Request::is('admin/*') || Request::is('admin')) {
+        }
+        else {
+//               $current_domain_name = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:'';
+//               $curl = curl_init();
+//               curl_setopt_array($curl, array(
+//                CURLOPT_URL => 'https://ada.skynettechnologies.us/check-website',
+//                CURLOPT_RETURNTRANSFER => true,
+//                CURLOPT_ENCODING => '',
+//                CURLOPT_MAXREDIRS => 10,
+//                CURLOPT_TIMEOUT => 0,
+//                CURLOPT_FOLLOWLOCATION => true,
+//                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//                CURLOPT_CUSTOMREQUEST => 'POST',
+//                CURLOPT_POSTFIELDS => array('domain' =>  $current_domain_name) //'xoopsdemo.com', 'skynettechnologies.com'
+//                 ));
+//                $response = curl_exec($curl);
+//                curl_close($curl);
+//                $settingURLObject = json_decode($response);
+//                if($settingURLObject->status == '0' && $settingURLObject->status == '4' || Request::is('admin')){
+//                }else{
+            $theme = Theme::uses('default')->layout('app');
+            $theme->asset()->writeContent('custom-inline-script', '
+                    <script id="aioa-adawidget" src="https://www.skynettechnologies.com/accessibility/js/all-in-one-accessibility-js-widget-minify.js?aioa_reg_req=true&colorcode=&token=&position=bottom_right">
+                    </script>');
+//                }
+        }
+}
 
     /**
      * Register the service provider.
@@ -101,11 +131,12 @@ class AllinoneaccessibilityServiceProvider extends ServiceProvider
 
         // Publish admin view
         $this->publishes([__DIR__ . '/../../resources/views' => base_path('resources/views/vendor/allinoneaccessibility')], 'view');
+        $this->publishes([__DIR__ . '/../../resources/js' => base_path('resources/js/')], 'view');
 
         // Publish language files
         $this->publishes([__DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/allinoneaccessibility')], 'lang');
 
         // Publish public files and assets.
-        $this->publishes([__DIR__ . '/public/' => public_path('/')], 'public');
+        $this->publishes([__DIR__ . '/../../public/' => public_path('/')], 'public');
     }
 }

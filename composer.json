@@ -1,19 +1,29 @@
 {
-  "name": "skynettechnologies/lavalite-allinoneaccessibility",
-  "description": "All in One Accessibility widget improves Lavalite website ADA compliance and browser experience for ADA, WCAG 2.1 & 2.2, Section 508, Australian DDA, European EAA EN 301 549, UK Equality Act (EA), Israeli Standard 5568, California Unruh, Ontario AODA, Canada ACA, German BITV, France RGAA, Brazilian Inclusion Law (LBI 13.146/2015), Spain UNE 139.",
-  "keywords": [
-    "lavalite",
-    "Allinoneaccessibility"
-  ],
-  "license": "MIT",
-  "type": "lavalite-package",
-  "homepage": "https://github.com/Skynettechnologies/Allinoneaccessibility",
+    "name": "skynettechnologies/lavalite-allinoneaccessibility",
+    "description": "Quick Web Accessibility Implementation with All In One Accessibility!",
+    "keywords": [
+        "lavalite",
+        "accessibility",
+        "wcag",
+        "ada",
+        "All",
+        "in",
+        "One",
+        "Accessibility"
+    ],
+    "license": "MIT",
+    "type": "lavalite-package",
     "authors": [
         {
-            "name": "Lavalite",
-            "email": "info@lavalite.org"
+            "name": "Rajesh Bhimani",
+            "email": "developer3@skynettechnologies.com",
+            "role": "Developer",
+            "homepage": "https://skynettechnologies.com"
         }
     ],
+    "support": {
+        "email": "hello@skynettechnologies.com"
+    },
     "require": {
         "php": "^8.1"
     },

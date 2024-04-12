@@ -9,23 +9,20 @@ class AllinoneaccessibilityTableSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('skynettechnologies_allinoneaccessibility_allinoneaccessibilitys')->insert([
+        DB::table('skynettechnologies_allinoneaccessibility_allinoneaccessibility')->insert([
             [
                 'id'      => '1',
-                'name'    => 'Renfos Technologies Pvt. Ltd.',
+                'name'    => 'Skynet Technologies Pvt. Ltd.',
                 'phone'   => '+91 484-4011 609',
                 'mobile'  => '+91 98470 32299',
-                'email'   => 'info@lavalite.org',
-                'website' => 'https://lavalite.org',
-                'details' => 'INFOPARK TBC
-                 JNI Stadium Complex, Kaloor
-                 Kochi, Kerala,
-                 India, Pin - 682017',
-                'address' => 'INFOPARK TBC, JNI Stadium Complex',
-                'street'  => 'Kaloor',
-                'city'    => 'Kochi',
-                'state'   => 'Kerala',
-                'country' => 'India',
+                'email'   => 'hello@skynettechnologies.com',
+                'website' => 'https://www.skynettechnologies.com/',
+                'details' => 'Las Vegas NV',
+                'address' => '',
+                'street'  => 'Las Vegas NV',
+                'city'    => 'Chicago',
+                'state'   => 'New York',
+                'country' => 'USA',
                 'zip'     => '682017',
                 'lat'     => '9.998856897222739',
                 'lng'     => '76.30494149737547',
@@ -53,39 +50,42 @@ class AllinoneaccessibilityTableSeeder extends Seeder
             ],
 
 
-                    ]);
+        ]);
 
         DB::table('menus')->insert([
+
             // Admin menu
             [
                 'parent_id'   => 1,
                 'key'         => null,
                 'url'         => 'admin/allinoneaccessibility/allinoneaccessibility',
-                'name'        => 'All in One Accessibility',
+                'name'        => 'All in One Accessibility™',
                 'description' => null,
                 'icon'        => 'fa-solid fa-universal-access',
                 'target'      => null,
                 'order'       => 190,
                 'status'      => 1,
             ],
+
             // User menu.
             [
                 'parent_id'   => 2,
                 'key'         => null,
                 'url'         => 'user/allinoneaccessibility/allinoneaccessibility',
-                'name'        => 'All in One Accessibility',
+                'name'        => 'All in One Accessibility™',
                 'description' => null,
                 'icon'        => 'fa-solid fa-universal-access',
                 'target'      => null,
                 'order'       => 190,
                 'status'      => 1,
             ],
+
             // Public menu.
             [
                 'parent_id'   => 3,
                 'key'         => null,
                 'url'         => 'allinoneaccessibility',
-                'name'        => 'All in One Accessibility',
+                'name'        => 'All in One Accessibility™',
                 'description' => null,
                 'icon'        => null,
                 'target'      => null,

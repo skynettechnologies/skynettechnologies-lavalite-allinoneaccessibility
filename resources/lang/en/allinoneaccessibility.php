@@ -15,7 +15,7 @@ return [
      * Singlular and plural name of the module
      */
     'name' => 'Allinoneaccessibility',
-    'names' => 'Allinoneaccessibilitys',
+    'names' => 'Allinoneaccessibility',
     'icon' => 'las la-list',
 
     /**

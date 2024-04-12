@@ -1,6 +1,7 @@
 @foreach($data as $key => $value)
 <div class="app-item">
     <div class="app-avatar">
+        {{ Trans::getNonLocalizedURL($url) }}
         <div class="app-avatar-image bg-primary">{!!@$value['title'][0]!!}</div>
         <div class="app-avatar-checkbox">
             <input type="checkbox" name="item_list[]" id="item_{!!$value['id']!!}" value="{!!$value['id']!!}">
