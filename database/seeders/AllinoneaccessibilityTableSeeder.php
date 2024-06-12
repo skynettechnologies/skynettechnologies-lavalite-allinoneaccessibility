@@ -12,18 +12,19 @@ class AllinoneaccessibilityTableSeeder extends Seeder
         DB::table('skynettechnologies_allinoneaccessibility_allinoneaccessibility')->insert([
             [
                 'id'      => '1',
-                'name'    => 'Skynet Technologies Pvt. Ltd.',
-                'phone'   => '+91 484-4011 609',
+                'name'    => 'Skynet Technologies USA LLC',
+                'phone'   => '(810)-358-8040',
                 'mobile'  => '+91 98470 32299',
                 'email'   => 'hello@skynettechnologies.com',
                 'website' => 'https://www.skynettechnologies.com/',
-                'details' => 'Las Vegas NV',
-                'address' => '',
-                'street'  => 'Las Vegas NV',
-                'city'    => 'Chicago',
-                'state'   => 'New York',
-                'country' => 'USA',
-                'zip'     => '682017',
+                'details' => '3265 Summitrun Drive, Independence, KY, 41051,
+                India, Pin - 682017',
+                'address' => '3265 Summitrun Drive, Independence, KY, 41051',
+                'street'  => 'Summitrun',
+                'city'    => 'Jamnagar',
+                'state'   => 'Gujarat',
+                'country' => 'India',
+                'zip'     => '361008',
                 'lat'     => '9.998856897222739',
                 'lng'     => '76.30494149737547',
                 'status'  => 'Active',
@@ -49,51 +50,9 @@ class AllinoneaccessibilityTableSeeder extends Seeder
                 'name'      => 'Delete Allinoneaccessibility',
             ],
 
-
         ]);
 
-        DB::table('menus')->insert([
 
-            // Admin menu
-            [
-                'parent_id'   => 1,
-                'key'         => null,
-                'url'         => 'admin/allinoneaccessibility/allinoneaccessibility',
-                'name'        => 'All in One Accessibility™',
-                'description' => null,
-                'icon'        => 'fa-solid fa-universal-access',
-                'target'      => null,
-                'order'       => 190,
-                'status'      => 1,
-            ],
-
-            // User menu.
-            [
-                'parent_id'   => 2,
-                'key'         => null,
-                'url'         => 'user/allinoneaccessibility/allinoneaccessibility',
-                'name'        => 'All in One Accessibility™',
-                'description' => null,
-                'icon'        => 'fa-solid fa-universal-access',
-                'target'      => null,
-                'order'       => 190,
-                'status'      => 1,
-            ],
-
-            // Public menu.
-            [
-                'parent_id'   => 3,
-                'key'         => null,
-                'url'         => 'allinoneaccessibility',
-                'name'        => 'All in One Accessibility™',
-                'description' => null,
-                'icon'        => null,
-                'target'      => null,
-                'order'       => 190,
-                'status'      => 1,
-            ],
-
-        ]);
 
         DB::table('settings')->insert([
             // Uncomment  and edit this section for entering value to settings table.

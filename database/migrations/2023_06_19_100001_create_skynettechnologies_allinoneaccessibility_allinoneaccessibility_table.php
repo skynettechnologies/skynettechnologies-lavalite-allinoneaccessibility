@@ -45,7 +45,9 @@ class CreateSkynettechnologiesAllinoneaccessibilityAllinoneaccessibilityTable ex
             $table->softDeletes();
             $table->nullableTimestamps();
         });
+
         DB::table('menus')->insert([
+
             // Admin menu
             [
                 'parent_id'   => 1,
@@ -59,33 +61,10 @@ class CreateSkynettechnologiesAllinoneaccessibilityAllinoneaccessibilityTable ex
                 'status'      => 1,
             ],
 
-            // User menu.
-            [
-                'parent_id'   => 2,
-                'key'         => null,
-                'url'         => 'user/allinoneaccessibility/allinoneaccessibility',
-                'name'        => 'All in One Accessibility™',
-                'description' => null,
-                'icon'        => 'fa-solid fa-universal-access',
-                'target'      => null,
-                'order'       => 190,
-                'status'      => 1,
-            ],
-
-            // Public menu.
-            [
-                'parent_id'   => 3,
-                'key'         => null,
-                'url'         => 'allinoneaccessibility',
-                'name'        => 'All in One Accessibility™',
-                'description' => null,
-                'icon'        => null,
-                'target'      => null,
-                'order'       => 190,
-                'status'      => 1,
-            ],
         ]);
+
     }
+
 
     /*
     * Reverse the migrations.
